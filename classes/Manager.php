@@ -3,25 +3,41 @@
 
 class Manager
 {
-    private $bdd;
+    private $db;
 
+
+    public function __construct($db)
+    {
+        $this->setDb($db);
+    }
+
+   public function addAllDestination(Destination $destination)
+   {
+         $req = $this->db->prepare('INSERT INTO destination(location, price) VALUES(:location, :price)');
+         $req->bindValue(':location', $destination->getLocation());
+         $req->bindValue(':price', $destination->getPrice());
+         $req->execute();
+   }
 
 
     /**
      * Get the value of bdd
      */
-    public function getBdd()
+    public function getDb()
     {
-        return $this->bdd;
+        return $this->db;
     }
 
     /**
      * Set the value of bdd
      */
-    public function setBdd($bdd): self
+    public function setDb($db): self
     {
-        $this->bdd = $bdd;
+        $this->db = $db;
 
         return $this;
     }
+
+
+
 }
