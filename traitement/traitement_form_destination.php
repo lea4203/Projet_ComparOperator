@@ -13,5 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Les données de localisation (location) et de prix (price) sont requises.";
     }
+    header('Location: ../admin.php');
+    exit();
 }
 ?>
