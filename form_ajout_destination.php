@@ -10,19 +10,23 @@
 </head>
 
 <body>
-    <div class="container mt-5">
-        <form action="traitement_form_destination.php" method="POST">
+<div class="container mt-5">
+        <h1>Ajout de Destination</h1>
+        <form method="post" action="traitement/traitement_form_destination.php">
             <div class="mb-3">
                 <label for="location" class="form-label">Pays</label>
-                <input type="text" class="form-control" id="location" name="location">
+                <input type="text" class="form-control" id="location" name="location" placeholder="Entrez la localisation">
             </div>
             <div class="mb-3">
-                <label for="price" class="form-label">Prix</label>
-                <input type="text" class="form-control" id="price" name="price">
+                <label for="price" class="form-label">Prix :</label>
+                <input type="text" class="form-control" id="price" name="price" placeholder="Entrez le prix">
             </div>
-            <button type="submit" class="btn btn-primary">Soumettre</button>
+            <div class="mb-3">
+                <label for="tour_operator_id" class="form-label">Tour Operator ID :</label>
+                <input type="text" class="form-control" id="tour_operator_id" name="tour_operator_id" placeholder="Entrez l'ID du tour operator">
+            <button type="submit" class="btn btn-primary">Envoyer</button>
         </form>
-    </div>
+    </div> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>

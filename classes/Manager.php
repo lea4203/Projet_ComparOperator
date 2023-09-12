@@ -11,17 +11,19 @@ class Manager
         $this->setDb($db);
     }
 
-   public function addAllDestination(Destination $destination)
+   public function addAllDestination($location, $price, $tour_operator_id)
    {
-         $req = $this->db->prepare('INSERT INTO destination(location, price) VALUES(:location, :price)');
-         $req->bindValue(':location', $destination->getLocation());
-         $req->bindValue(':price', $destination->getPrice());
-         $req->execute();
+         $req = $this->db->prepare('INSERT INTO destination(location, price,tour_operator_id) VALUES(:location,:price,:tour_operator_id)');
+        $req->execute([
+            'location' => $location,
+            'price' => $price,
+            'tour_operator_id' => $tour_operator_id
+        ]);
    }
 
 
     /**
-     * Get the value of bdd
+     * Get the value of db
      */
     public function getDb()
     {
@@ -29,7 +31,7 @@ class Manager
     }
 
     /**
-     * Set the value of bdd
+     * Set the value of db
      */
     public function setDb($db): self
     {
