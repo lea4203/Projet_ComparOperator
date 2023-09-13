@@ -10,13 +10,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 </head>
-<header>
-    <?php
-    include('header.php');
-    ?>
-</header>
 
 <body>
+    <?php include('header.php'); ?>
     <main>
 
 
@@ -26,11 +22,6 @@
         <script src="js/scripts.js"></script>
     </main>
 
+    <?php include('footer.php'); ?>
 </body>
-<footer>
-    <?php
-    include('footer.php');
-    ?>
-</footer>
-
 </html>

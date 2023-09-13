@@ -26,3 +26,52 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: #36454f;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+th {
+    text-align: left;
+    padding: 10px;
+}
+
+td {
+    border: 1px solid #36454f;
+    padding: 10px;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #dcdcdc;
+}
+
+.admin_header {
+    background-image: url('/images/voyager.avif');
+    background-attachment: fixed;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.custom-primary-btn {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.custom-danger-btn {
+    background-color: #dc3545; 
+    border-color: #dc3545;
+}
