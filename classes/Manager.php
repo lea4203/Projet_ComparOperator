@@ -25,6 +25,12 @@ class Manager
         }
     }
 
+    public function getHomeDestination() {
+        $req = $this->db->prepare('SELECT * FROM destination');
+        $req->execute();
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 
     public function getAllDestination()
     {
@@ -32,8 +38,8 @@ class Manager
         $req->execute();
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         return $result;
-
     }
+    
 
     public function addAllTourOperator($name, $grade_count, $grade_total, $link)
     {
