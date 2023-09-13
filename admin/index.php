@@ -19,6 +19,10 @@ $tourOperators = $manager->getAllTourOperator();
     <title>Liste des Destinations</title>
 </head>
 
+<header>
+<?php include('header.php'); ?>
+</header>
+
 <body class="admin_header">
 
     <div class="container mt-5">
