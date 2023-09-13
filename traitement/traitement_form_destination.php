@@ -12,8 +12,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $manager->addAllDestination($location,$price,$tour_operator_id);
     } else {
         echo "Les données de localisation (location) et de prix (price) sont requises.";
-    }
-    header('Location: ../admin.php');
+    } 
+    header('Location: ../admin/index.php');
     exit();
+
 }
 ?>
