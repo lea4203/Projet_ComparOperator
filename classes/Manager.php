@@ -90,7 +90,7 @@ class Manager
         return $result;
     }
 
- public function updateTourOperator($id, $name, $grade_count, $grade_total, $link)
+    public function updateTourOperator($id, $name, $grade_count, $grade_total, $link)
     {
         $req = $this->db->prepare('UPDATE tour_operator SET name = :name, grade_count = :grade_count, grade_total = :grade_total, link = :link WHERE id = :id');
         $req->execute([
@@ -101,10 +101,8 @@ class Manager
             'link' => $link
         ]);
     }
-    
 
-
-    public function getOneTourOperator($id)
+    public function getTourOperator($id)
     {
         $req = $this->db->prepare('SELECT * FROM tour_operator WHERE id = :id');
         $req->execute([
@@ -113,7 +111,33 @@ class Manager
         $result = $req->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
-    
+
+    public function getDestination($id)
+    {
+        $req = $this->db->prepare('SELECT * FROM destination WHERE id = :id');
+        $req->execute([
+            'id' => $id
+        ]);
+        $result = $req->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function updateDestination($id, $location, $price, $tourOperatorID)
+{
+    $req = $this->db->prepare('UPDATE destination SET location = :location, price = :price, tour_operator_id = :tourOperatorID WHERE id = :id');
+    $req->execute([
+        'id' => $id,
+        'location' => $location,
+        'price' => $price,
+        'tourOperatorID' => $tourOperatorID, // Assurez-vous que cette variable est correctement définie.
+    ]);
+}
+
+
+
+
+
+
     /**
      * Get the value of db
      */
