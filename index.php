@@ -25,7 +25,8 @@ $destinations = $manager->getHomeDestination();
     </header>
 
     <main>
-        <div class="col-12 bg-secondary pt-5 pb-3"></div>
+        <div class="col-s12 bg-secondary pt-5 pb-3"></div>
+        <div class="col-12 bg-success text-white pt-3 pb-3 text-center opacity-75"><h1 class="display-4">Découvrez toutes nos destinations !</h1></div>
         <div class="container pt-5 pb-3">
             <div class="row">
                 <?php
@@ -37,7 +38,10 @@ $destinations = $manager->getHomeDestination();
                     echo '<h5 class="card-title"><b>' . $destination['location'] . '</b></h5>';
                     echo '<p class="card-text">A partir de : ' . $destination['price'] . ' €</p>';
                     // echo '<p class="card-text">A partir de ...</p>';
-                    echo '<a href="#" class="btn btn-danger">Partez maintenant !</a>';
+                    echo '<form method="POST" action="destination.php">';
+                    echo '<input type="hidden" name="destination_id" value="' . $destination['id'] . '">';
+                    echo '<button type="submit" class="btn btn-danger">Partez maintenant !</button>';
+                    echo '</form>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
@@ -52,7 +56,7 @@ $destinations = $manager->getHomeDestination();
         <script src="js/scripts.js"></script>
     </main>
 
-    <footer id="contact">
+    <footer class="bg-success opacity-75" id="contact">
         <?php include('footer.php'); ?>
     </footer>
 </body>

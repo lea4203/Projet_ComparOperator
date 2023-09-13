@@ -1,5 +1,4 @@
-<footer>
-    <div class="container">
+<div class="container pt-1">
         <div class="row">
             <div class="col-md-4">
                 <h4>Contact</h4>
@@ -11,7 +10,6 @@
             <div class="col-md-4">
                 <h4>Liens rapides</h4>
                 <ul>
-                    <li><a href="#">Accueil</a></li>
                     <li><a href="#">Destinations</a></li>
                     <li><a href="#">Voyages organisés</a></li>
                     <li><a href="#">À propos de nous</a></li>
@@ -21,8 +19,8 @@
             <div class="col-md-4">
                 <h4>Suivez-nous</h4>
                 <ul class="social-icons">
-                <li><a href="#"><i class="fa-brands fa-facebook-f" style="color: #ffffff;"></a></li>
-                <li><a href="#"><i class="fab fa-facebook-f"></a></li>
+                <li><a href="#"><i class="fa-brands fa-facebook-f" style="color: #ffffff;"></i></a></li>
+                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                     <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
@@ -37,4 +35,3 @@
             </div>
         </div>
     </div>
-</footer>
