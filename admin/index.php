@@ -25,6 +25,18 @@ $tourOperators = $manager->getAllTourOperator();
     <div class="container mt-5">
         <h1>Liste des Destinations</h1>
 
+      
+<header>
+<?php include('header.php'); ?>
+</header>
+
+        <div class="pt-4 pb-1 m-3 bg-secondary text-white text-center opacity-50">
+            <h2>Gestion du site</h2></div>
+        <div class="container col-8 align-item-center pb-3 border-bottom border-secondary">
+        <h3>Liste des Destinations</h3>
+
+
+
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr>
