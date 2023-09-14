@@ -1,43 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+}
+
+header {
+    background-color: #051c55;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-top: 20px;
+    text-align: center;
+    color: #051c55;
+}
+
+.info-box {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.btn.custom-primary-btn {
+    background-color: #051c55;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn.custom-primary-btn:hover {
+    background-color: #032444;
+}
+
+.btn.custom-danger-btn {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn.custom-danger-btn:hover {
+    background-color: #cc0000;
+}
+
+.btn.custom-success-btn {
+    background-color: #00cc00;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn.custom-success-btn:hover {
+    background-color: #009900;
+}
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: white;
 }
 
-thead {
-    background-color: #36454f;
-    justify-content: center;
-    align-items: center;
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #051c55;
     color: white;
 }
 
-th {
-    text-align: left;
-    padding: 10px;
+.fa-star {
+    color: #ffcc00;
 }
 
-td {
-    border: 1px solid #36454f;
-    padding: 10px;
+a {
+    color: #051c55;
+    text-decoration: none;
 }
 
-tbody tr:nth-child(odd) {
-    background-color: #f2f2f2;
+a:hover {
+    text-decoration: underline;
 }
-
-tbody tr:hover {
-    background-color: #dcdcdc;
-}
-
-.custom-primary-btn {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-.custom-danger-btn {
-    background-color: #dc3545; 
-    border-color: #dc3545;
-}
-
