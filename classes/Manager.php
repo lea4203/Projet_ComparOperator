@@ -70,13 +70,15 @@ class Manager
         return $result;
     }
 
-    public function deleteDestination($destinationID)
+   public function deleteDestination($id)
     {
         $req = $this->db->prepare('DELETE FROM destination WHERE id = :id');
         $req->execute([
-            'id' => $destinationID
+            'id' => $id
         ]);
     }
+ 
+
     public function deleteTourOperator($tourOperatorID)
     {
         $req = $this->db->prepare('DELETE FROM tour_operator WHERE id = :id');
@@ -128,14 +130,13 @@ class Manager
         return $result;
     }
 
-    public function updateDestination($id, $location, $price, $tourOperatorID)
+    public function updateDestination($id, $location, $price)
 {
-    $req = $this->db->prepare('UPDATE destination SET location = :location, price = :price, tour_operator_id = :tourOperatorID WHERE id = :id');
+    $req = $this->db->prepare('UPDATE destination SET location = :location, price = :price WHERE id = :id');
     $req->execute([
         'id' => $id,
         'location' => $location,
         'price' => $price,
-        'tourOperatorID' => $tourOperatorID, // Assurez-vous que cette variable est correctement définie.
     ]);
 }
 
