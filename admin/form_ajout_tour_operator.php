@@ -9,7 +9,7 @@
 <body>
     <div class="container mt-5">
         <h1>Formulaire de Tour Operator</h1>
-        <form action="traitement/traitement_form_tour_operator.php" method="post">
+        <form action="../traitement/traitement_form_tour_operator.php" method="post">
             <div class="mb-3">
                 <label for="name" class="form-label">Nom du tour operator</label>
                 <input type="text" class="form-control" id="name" name="name">
