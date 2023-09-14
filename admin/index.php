@@ -16,6 +16,11 @@ $tourOperators = $manager->getAllTourOperator();
     <title>Liste des Destinations</title>
 </head>
 
+<<<<<<< HEAD
+
+
+<body>
+=======
 
 <body>
 <header>
@@ -23,6 +28,7 @@ $tourOperators = $manager->getAllTourOperator();
 </header>
 
 <body class="admin_header">
+>>>>>>> 741c84c456cf97feda3c9a60df8ff09559601908
 
     <div class="container mt-5">
         <h1>Liste des Destinations</h1>
