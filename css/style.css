@@ -71,13 +71,6 @@ tbody tr:hover {
     background-color: #dcdcdc;
 }
 
-.admin_header {
-    background-image: url('/images/voyager.avif');
-    background-attachment: fixed;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 .custom-primary-btn {
     background-color: #007bff;
     border-color: #007bff;

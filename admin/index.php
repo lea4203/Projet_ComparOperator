@@ -1,12 +1,9 @@
 <?php
-
 require_once '../classes/Manager.php';
 require_once '../config/db.php';
 $manager = new Manager($db);
 $destinations = $manager->getAllDestination();
-
 $tourOperators = $manager->getAllTourOperator();
-
 ?>
 
 <!DOCTYPE html>
@@ -19,11 +16,19 @@ $tourOperators = $manager->getAllTourOperator();
     <title>Liste des Destinations</title>
 </head>
 
+<<<<<<< HEAD
+
+
+<body>
+=======
+
+<body>
 <header>
 <?php include('header.php'); ?>
 </header>
 
 <body class="admin_header">
+>>>>>>> 741c84c456cf97feda3c9a60df8ff09559601908
 
     <div class="container mt-5">
         <h1>Liste des Destinations</h1>
@@ -33,6 +38,7 @@ $tourOperators = $manager->getAllTourOperator();
                 <tr>
                     <th>Location</th>
                     <th>Prix</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,12 +50,22 @@ $tourOperators = $manager->getAllTourOperator();
                         <td>
                             <?php echo $destination['price']; ?>
                         </td>
+                        <td>
+                            <form action="modifier_destination.php" method="get" style="display: inline;">
+                                <input type="hidden" name="id" value="<?php echo $destination['id']; ?>">
+                                <button type="submit" class="btn custom-primary-btn btn-sm">Modifier</button>
+                            </form>
+                            <form action="supprimer_destination.php" method="post" style="display: inline;">
+                                <input type="hidden" name="id" value="<?php echo $destination['id']; ?>">
+                                <button type="submit" class="btn custom-danger-btn btn-sm">Supprimer</button>
+                            </form>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
 
-        <a href="form_ajout_destination.php" class="btn btn-primary" style="color:  #051c55">Ajouter une destination</a>
+        <a href="form_ajout_destination.php" class="btn btn-primary" style="color: #051c55">Ajouter une destination</a>
     </div>
 
     <div class="container mt-5">
@@ -81,7 +97,7 @@ $tourOperators = $manager->getAllTourOperator();
                             <?php echo $tourOperator['link']; ?>
                         </td>
                         <td>
-                            <form action="modifier_tour_operator.php" method="post" style="display: inline;">
+                            <form action="modifier_tour_operator.php" method="get" style="display: inline;">
                                 <input type="hidden" name="id" value="<?php echo $tourOperator['id']; ?>">
                                 <button type="submit" class="btn custom-primary-btn btn-sm">Modifier</button>
                             </form>
@@ -96,11 +112,7 @@ $tourOperators = $manager->getAllTourOperator();
         </table>
     </div>
 
-
-    <a href="form_ajout_tour_operator.php" class="btn btn-primary" style="color:  #051c55">Ajouter une Tour
-        Opérateur</a>
-    </div>
-
+    <a href="form_ajout_tour_operator.php" class="btn btn-primary" style="color: #051c55">Ajouter une Tour Opérateur</a>
 </body>
 
 </html>
