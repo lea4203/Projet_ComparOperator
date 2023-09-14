@@ -18,20 +18,16 @@
             </div>
             <div class="col-md-4">
                 <h4>Suivez-nous</h4>
-                <ul class="social-icons">
-                <li><a href="#"><i class="fa-brands fa-facebook-f" style="color: #ffffff;"></i></a></li>
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
+                <div class="col-md-12 d-block">
+                    <ul class="social-icons">
+                    <a href="#"><i class="fab fa-2x fa-facebook m-3"></i></a>
+                    <a href="#"><i class="fab fa-2x fa-twitter m-3"></i></a>
+                    <a href="#"><i class="fab fa-2x fa-instagram m-3"></i></a>
+                    <a href="#"><i class="fab fa-2x fa-linkedin m-3"></i></a>
+                    <p>© 2023 - ComparOperator</p>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 text-center">
-                <p>© 2023 - ComparOperator</p>
-            </div>
-        </div>
-    </div>
+

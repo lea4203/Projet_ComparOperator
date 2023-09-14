@@ -12,7 +12,7 @@
 <body>
 <div class="container mt-5">
         <h1>Ajout de Destination</h1>
-        <form method="post" action="traitement/traitement_form_destination.php">
+        <form method="post" action="../traitement/traitement_form_destination.php">
             <div class="mb-3">
                 <label for="location" class="form-label">Pays</label>
                 <input type="text" class="form-control" id="location" name="location" placeholder="Entrez la localisation">
