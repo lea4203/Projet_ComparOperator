@@ -16,6 +16,8 @@ $tourOperators = $manager->getAllTourOperator();
     <title>Liste des Destinations</title>
 </head>
 
+
+
 <body>
 
     <div class="container mt-5">

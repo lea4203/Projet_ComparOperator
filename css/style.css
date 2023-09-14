@@ -6,8 +6,18 @@ body {
     background-size: cover;
   }
   
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Ombre légère */
+    background-color: rgba(27, 160, 255, 0.633); /* Fond transparent à 75% */
+    transition: transform 0.2s; /* Animation de transformation au survol */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Agrandissement au survol */
+}
+  
 footer {
-    background-color: #333;
+    background-color: rgba(75, 75, 75, 0.75);
     color: #fff;
     padding: 20px 0;
     text-align: center;
@@ -21,10 +31,12 @@ footer p {
 footer a {
     color: #fff;
     text-decoration: none;
+    transition: color 0.2s;
 }
 
 footer a:hover {
-    text-decoration: underline;
+    font-weight: bold;
+    color: #ffcc00;
 }
 
 table {
