@@ -32,6 +32,16 @@ class Manager
         return $result;
     }
 
+    public function getHomeTourOperator($id) {
+        $req = $this->db->prepare('SELECT * FROM tour_operator WHERE id = :id');
+        $req->execute([
+            'id' => $id
+        ]);
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    
+
     public function getAllDestination()
     {
         $req = $this->db->prepare('SELECT * FROM destination INNER JOIN tour_operator ON destination.tour_operator_id = tour_operator.id');
