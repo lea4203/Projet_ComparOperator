@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $manager = new Manager($db);
     $manager->updateTourOperator($id, $name, $grade_count, $grade_total, $link);
 
-    header("Location: ../admin/index.php");
+    header("Location:   ../admin/index.php");
     exit;
 } else {
     header("Location: erreur.php");

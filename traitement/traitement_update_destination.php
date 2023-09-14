@@ -10,9 +10,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $manager = new Manager($db);
     $manager->updateDestination($id, $location, $price);
 
-    echo "Destination mise à jour avec succès.";
+    
 } else {
-    header("Location: admin/index.php");
-    exit;
+    // Utilisez la redirection pour renvoyer à la page d'accueil
+    header("Location: ../admin/index.php");
+    exit; // Assurez-vous d'ajouter exit() après header() pour terminer l'exécution du script
 }
 ?>

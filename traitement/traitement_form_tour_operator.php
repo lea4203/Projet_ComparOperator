@@ -15,6 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Veuillez compléter le formulaire pour ajouter un tour opérateur.";
     }
-    header('Location: ../admin.php');
+    header('Location: ../admin/index.php');
     exit();
 }
