@@ -16,19 +16,9 @@ $tourOperators = $manager->getAllTourOperator();
     <title>Liste des Destinations</title>
 </head>
 
-<<<<<<< HEAD
 
 
 <body>
-=======
-
-<body>
-<header>
-<?php include('header.php'); ?>
-</header>
-
-<body class="admin_header">
->>>>>>> 741c84c456cf97feda3c9a60df8ff09559601908
 
     <div class="container mt-5">
         <h1>Liste des Destinations</h1>
@@ -55,7 +45,7 @@ $tourOperators = $manager->getAllTourOperator();
                                 <input type="hidden" name="id" value="<?php echo $destination['id']; ?>">
                                 <button type="submit" class="btn custom-primary-btn btn-sm">Modifier</button>
                             </form>
-                            <form action="supprimer_destination.php" method="post" style="display: inline;">
+                            <form action="supprimer_destination.php" method="get" style="display: inline;">
                                 <input type="hidden" name="id" value="<?php echo $destination['id']; ?>">
                                 <button type="submit" class="btn custom-danger-btn btn-sm">Supprimer</button>
                             </form>
