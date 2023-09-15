@@ -3,8 +3,9 @@
 require_once 'classes/Manager.php';
 require_once 'config/db.php';
 $manager = new Manager($db);
+
 $location = isset($_POST['location']) ? $_POST['location'] : null;
-// var_dump($tourOperators);
+// var_dump($location);
 
 ?>
 
@@ -27,44 +28,67 @@ $location = isset($_POST['location']) ? $_POST['location'] : null;
 
     <main>
         <div class="col-12 bg-danger pt-5 pb-3"></div>
-        <div class="bg-danger text-white pt-3 pb-3 text-center opacity-75"><h1 class="display-4">Nos partenaires pour ce voyage !</h1></div>
-            <div class="container col-12 pt-5 pb-3">
+        <div class="bg-danger text-white pt-3 pb-3 text-center opacity-75">
+            <h1 class="display-4">Nos partenaires pour ce voyage !</h1>
+        </div>
+        <div class="container col-12 pt-5 pb-3 align-item-center">
             <div class="row">
-                <?php
-                   
-                    function afficherEtoiles($nombre) {
-                        $nombre = (int)$nombre; // Convertir en entier
-                        $etoiles = '';
-                    
-                        for ($i = 0; $i < $nombre; $i++) {
-                            $etoiles .= '⭐'; // Utilisation d'une étoile Unicode, vous pouvez également utiliser une image ou une classe CSS ici
-                        }
-                    
-                        return $etoiles;
-                    }
+            <div class="col-lg-4 col-md-12">
+            <?php
+                if ($location) {
+                    $destinations = $manager->getDestinationByLocation($location);
 
-                    if ($location) {
-                        $tourOperators = $manager->getDestinationsByLocation($id);
-                    
-                    foreach ($tourOperators as $tourOperator) {
-                    
-                    echo '<div class="col-lg-3 col-md-6 col-sm-12 mb-3">';
-                    echo '<div class="card">';
-                    echo '<p class="m-4"><img src="' . $tourOperator['img'] . '" class="card-img-top" alt="' . $tourOperator['name'] . '">';
-                    echo '<div class="card-body">';
-                    echo '<h5 class="card-title">Le tour opérateur <b>' . $tourOperator['name'] . '</b> propose ce voyage à ' . $tourOperator['price'] . '€.</h5>';
-                    echo '<h6 class="card-title"><b>' . afficherEtoiles($tourOperator['grade_count']) . '</b></h6>';
-                    echo '<p class="card-text"><a href="' . $tourOperator['link'] . '" target="_blank">Site du Tour Opérateur</a></p>';                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
+                    foreach ($destinations as $destination) {
+                        echo '<div class="card m-3">';
+                        echo '<img src="' . $destination['img'] . '" class="card-img-top img-thumbnail" alt="' . $destination['location'] . '">';
+                        echo '<div class="card-body">';
+                        echo '<h1 class="display-3 text-secondary">Destination</h1>';
+                        echo '<h1 class="display-1 text-danger"><b>' . $destination['location'] . '</b></h1>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo "Aucune destination trouvée pour cette recherche.";
                 }
-                    } else {
-                    echo "Aucun tour-opérateur trouvé pour cette destination.";
-                }
-                        
                 ?>
             </div>
-            <div class="row"></div>
+            <div class="col-lg-8 col-md-12 d-flex flex-wrap">
+                <?php
+
+                function afficherEtoiles($nombre)
+                {
+                    $nombre = (int)$nombre; // Convertir en entier
+                    $etoiles = '';
+
+                    for ($i = 0; $i < $nombre; $i++) {
+                        $etoiles .= '⭐'; // Utilisation d'une étoile Unicode, vous pouvez également utiliser une image ou une classe CSS ici
+                    }
+
+                    return $etoiles;
+                }
+
+                if ($location) {
+                    $tourOperators = $manager->getTourOperatorByLocation($location);
+
+                    foreach ($tourOperators as $tourOperator) {
+
+                        echo '<div class="col-lg-6 col-md-6 col-sm-12 mb-2">';
+                        echo '<div class="card p-1 m-3">';
+                        echo '<p class="pt-4 opacity-75"><img src="' . $tourOperator['img'] . '" class="card-img-top img-thumbnail" alt="' . $tourOperator['name'] . '" style="max-height: 75px"></p>';
+                        echo '<div class="card-body text-align-center">';
+                        echo '<h5 class="card-title">Le tour opérateur <br><b>' . $tourOperator['name'] . '</b><br>vous propose ce voyage.</h5>';
+                        echo '<h6 class="card-title"><b>' . afficherEtoiles($tourOperator['grade_count']) . '</b></h6>';
+                        echo '<button type="button" class="btn btn-sm btn-outline-danger"><a href="' . $tourOperator['link'] . '" target="_blank">Site du Tour Opérateur</a></button>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo "Aucun tour-opérateur trouvé pour cette destination.";
+                }
+
+                ?>
+            </div>
         </div>
         </div>
         <!-- Bootstrap core JS-->
