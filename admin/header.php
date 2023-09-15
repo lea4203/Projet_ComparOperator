@@ -7,9 +7,9 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <!-- <li class="nav-item"><a class="nav-link" href="#destination">Destinations</a></li> -->
-                    <li class="nav-item"><a class="nav-link" href="#carouselExampleControls">Ajouter une destination</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Ajouter un tour opérateur</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="form_ajout_destination.php">Ajouter une destination</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="form_ajout_tour_operator.php">Ajouter un tour opérateur</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="login_administrator.php">Connectez-vous</a></li>
                 </ul>
             </div>
         </div>

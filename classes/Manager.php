@@ -25,26 +25,35 @@ class Manager
         }
     }
 
+
+    
+
     // INNER JOIN tour_operator ON destination.tour_operator_id = tour_operator.id 
     public function getHomeDestination() {
         $req = $this->db->prepare('SELECT * FROM destination ORDER BY price');
+
         $req->execute();
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-    
 
-    public function getHomeTourOperator($id) {
+
+    public function getHomeTourOperator($id)
+    {
         $req = $this->db->prepare('SELECT * FROM tour_operator WHERE id = :id ORDER BY price ASC LIMIT 1');
         $req->execute([
             'id' => $id
-        ]);      
+        ]);
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
+
+   
     
     public function getTourOperatorByLocation($location) {
         $req = $this->db->prepare('SELECT * FROM destination WHERE location = :location');
+
         $req->execute([
             'location' => $location
         ]);
@@ -69,9 +78,13 @@ class Manager
     
         return $tourOperators;
     }
+
+
+
+
     
     
-    
+ 
     public function getAllDestination()
     {
         $req = $this->db->prepare('SELECT * FROM destination INNER JOIN tour_operator ON destination.tour_operator_id = tour_operator.id');
@@ -119,7 +132,7 @@ class Manager
         return $result;
     }
 
-   
+
     public function deleteDestination($id)
     {
         $req = $this->db->prepare('DELETE FROM destination WHERE id = :id');
@@ -216,6 +229,25 @@ class Manager
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
+
+    public function addAdministrator($username, $passwordHash)
+    {
+        $req = $this->db->prepare("INSERT INTO administrator (username, password) VALUES (:username, :password)");
+        $req->execute([
+            "username" => $username,
+            "password" => $passwordHash, // Utilisez $passwordHash au lieu de $password
+        ]);
+    }
+    
+    public function getAllAdministrator($username)
+    {
+        $req = $this->db->prepare("SELECT * FROM administrator WHERE username = :username LIMIT 1 ");
+        $req->bindParam(":username", $username);
+        $req->execute();
+        return $req->fetch(PDO::FETCH_ASSOC);
+    }
+    
     /**
      * Get the value of db
      */
