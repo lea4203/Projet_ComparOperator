@@ -91,7 +91,7 @@ $tourOperators = $manager->getAllTourOperator();
                             destination</a>
                 </div>
                 <div class="col-lg-4 col-md-12 pb-3 border-bottom border-secondary">
-                    <h3>Liste des Tour Operators</h3>
+                    <h3>Liste des Tours Operators</h3>
                     <table class="table table-bordered">
                         <thead class="thead-dark">
                             <tr>
@@ -122,16 +122,21 @@ $tourOperators = $manager->getAllTourOperator();
                                             <input type="hidden" name="id" value="<?php echo $tourOperator['id']; ?>">
                                             <button type="submit" class="btn custom-primary-btn btn-sm">Modifier</button>
                                         </form>
+                                        <br>
+                                        <br>
                                         <form action="supprimer_tour_operator.php" method="post" style="display: inline;">
                                             <input type="hidden" name="id" value="<?php echo $tourOperator['id']; ?>">
                                             <button type="submit" class="btn custom-danger-btn btn-sm">Supprimer</button>
                                         </form>
+                                        <br>
+                                        <br>
                                         <?php if ($tourOperator['is_premium'] == 0): ?>
                                             <form action="passer_premium.php" method="post" style="display: inline;">
                                                 <input type="hidden" name="id" value="<?php echo $tourOperator['id']; ?>">
                                                 <button type="submit" class="btn custom-success-btn btn-sm">Passer en mode
                                                     Premium</button>
                                             </form>
+
                                         <?php else: ?>
                                             <i class="fas fa-star text-warning"></i>
                                         <?php endif; ?>

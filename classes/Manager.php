@@ -10,26 +10,40 @@ class Manager
     {
         $this->setDb($db);
     }
-    public function addAllDestination($location, $price, $tourOperatorID)
+    public function addAllDestination($location, $price, $tour_operator_id)
     {
-        if ($this->tourOperatorExists($tourOperatorID)) {
-            $req = $this->db->prepare('INSERT INTO destination(location, price, tour_operator_id) VALUES(:location, :price, :tourOperatorID)');
+        if ($this->tourOperatorExists($tour_operator_id)) {
+            $sql = 'INSERT INTO destination (location, price, tour_operator_id) VALUES (:location, :price, :tour_operator_id)';
 
-            $req->execute([
-                'location' => $location,
-                'price' => $price,
-                'tourOperatorID' => $tourOperatorID,
-            ]);
-        } else {
-            echo "L'ID du tour-operator n'existe pas.";
+             
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindParam(':location', $location);
+                $stmt->bindParam(':price', $price);
+                $stmt->bindParam(':tour_operator_id', $tour_operator_id);
+                $stmt->execute();
+            
         }
     }
 
+    public function tourOperatorExists($tour_operator_id)
+    {
+        $req = $this->db->prepare('SELECT * FROM tour_operator WHERE id = :id');
+        $req->execute([
+            'id' => $tour_operator_id
+        ]);
+        $result = $req->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
 
-    
+
+
+
+
+
 
     // INNER JOIN tour_operator ON destination.tour_operator_id = tour_operator.id 
-    public function getHomeDestination() {
+    public function getHomeDestination()
+    {
         $req = $this->db->prepare('SELECT * FROM destination ORDER BY price');
 
         $req->execute();
@@ -49,36 +63,46 @@ class Manager
     }
 
 
-   
-    
-    public function getTourOperatorByLocation($location) {
+
+
+
+
+    public function getTourOperatorByLocation($location)
+    {
         $req = $this->db->prepare('SELECT * FROM destination WHERE location = :location');
 
         $req->execute([
             'location' => $location
         ]);
         $destinationData = $req->fetchAll(PDO::FETCH_ASSOC);
-    
+
         $tourOperators = [];
-    
+
         foreach ($destinationData as $destination) {
             $tourOperatorId = $destination['tour_operator_id'];
-    
+
             $req = $this->db->prepare('SELECT * FROM tour_operator WHERE id = :tour_operator_id');
             $req->execute([
                 'tour_operator_id' => $tourOperatorId
             ]);
-    
+
             $tourOperatorData = $req->fetchAll(PDO::FETCH_ASSOC);
-    
+
             if (!empty($tourOperatorData)) {
                 $tourOperators[] = $tourOperatorData[0];
             }
         }
-    
+
         return $tourOperators;
     }
+
+
+
+
+
+
  
+
     public function getAllDestination()
     {
         $req = $this->db->prepare('SELECT * FROM destination INNER JOIN tour_operator ON destination.tour_operator_id = tour_operator.id');
@@ -99,7 +123,19 @@ class Manager
         ]);
     }
 
+
+    public function getAllTourOperator()
+    {
+        $req = $this->db->prepare('SELECT * FROM tour_operator');
+        $req->execute();
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+  
+
     public function getDestinationByLocation($location) {
+
         $req = $this->db->prepare('SELECT * FROM destination WHERE location = :location LIMIT 1');
         $req->execute([
             'location' => $location
@@ -107,7 +143,7 @@ class Manager
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-    
+
     public function getDestinationsByTourOperator($tourOperatorID)
     {
         $req = $this->db->prepare('SELECT * FROM destination WHERE tour_operator_id = :tour_operator_id');
@@ -137,15 +173,7 @@ class Manager
     }
 
 
-    public function tourOperatorExists($tourOperatorID)
-    {
-        $req = $this->db->prepare('SELECT * FROM tour_operator WHERE id = :id');
-        $req->execute([
-            'id' => $tourOperatorID
-        ]);
-        $result = $req->fetch(PDO::FETCH_ASSOC);
-        return $result;
-    }
+
 
     public function updateTourOperator($id, $name, $grade_count, $grade_total, $link)
     {
@@ -219,10 +247,11 @@ class Manager
         $req = $this->db->prepare("INSERT INTO administrator (username, password) VALUES (:username, :password)");
         $req->execute([
             "username" => $username,
-            "password" => $passwordHash, // Utilisez $passwordHash au lieu de $password
+            "password" => $passwordHash,
+            // Utilisez $passwordHash au lieu de $password
         ]);
     }
-    
+
     public function getAllAdministrator($username)
     {
         $req = $this->db->prepare("SELECT * FROM administrator WHERE username = :username LIMIT 1 ");
@@ -230,7 +259,7 @@ class Manager
         $req->execute();
         return $req->fetch(PDO::FETCH_ASSOC);
     }
-    
+
     /**
      * Get the value of db
      */
