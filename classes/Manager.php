@@ -78,12 +78,6 @@ class Manager
     
         return $tourOperators;
     }
-
-
-
-
-    
-    
  
     public function getAllDestination()
     {
@@ -103,14 +97,6 @@ class Manager
             'grade_total' => $grade_total,
             'link' => $link
         ]);
-    }
-
-    public function getAllTourOperator()
-    {
-        $req = $this->db->prepare('SELECT * FROM tour_operator');
-        $req->execute();
-        $result = $req->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
     }
 
     public function getDestinationByLocation($location) {
@@ -203,8 +189,6 @@ class Manager
         ]);
     }
 
-
-
     public function updateTourOperatorIsPremium($id, $is_premium)
     {
         $req = $this->db->prepare('UPDATE tour_operator SET is_premium = :is_premium WHERE id = :id');
@@ -229,7 +213,6 @@ class Manager
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-
 
     public function addAdministrator($username, $passwordHash)
     {
