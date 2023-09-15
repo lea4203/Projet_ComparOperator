@@ -27,6 +27,9 @@ class Manager
 
     public function getHomeDestination() {
         $req = $this->db->prepare('SELECT * FROM destination INNER JOIN tour_operator ON destination.tour_operator_id = tour_operator.id ORDER BY price');
+    public function getHomeDestination()
+    {
+        $req = $this->db->prepare('SELECT * FROM destination');
         $req->execute();
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         return $result;
@@ -59,7 +62,7 @@ class Manager
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-    
+
 
     public function addAllTourOperator($name, $grade_count, $grade_total, $link)
     {
@@ -90,14 +93,15 @@ class Manager
         return $result;
     }
 
-   public function deleteDestination($id)
+   
+    public function deleteDestination($id)
     {
         $req = $this->db->prepare('DELETE FROM destination WHERE id = :id');
         $req->execute([
             'id' => $id
         ]);
     }
- 
+
 
     public function deleteTourOperator($tourOperatorID)
     {
@@ -151,20 +155,41 @@ class Manager
     }
 
     public function updateDestination($id, $location, $price)
-{
-    $req = $this->db->prepare('UPDATE destination SET location = :location, price = :price WHERE id = :id');
-    $req->execute([
-        'id' => $id,
-        'location' => $location,
-        'price' => $price,
-    ]);
-}
+    {
+        $req = $this->db->prepare('UPDATE destination SET location = :location, price = :price WHERE id = :id');
+        $req->execute([
+            'id' => $id,
+            'location' => $location,
+            'price' => $price,
+        ]);
+    }
 
 
 
+    public function updateTourOperatorIsPremium($id, $is_premium)
+    {
+        $req = $this->db->prepare('UPDATE tour_operator SET is_premium = :is_premium WHERE id = :id');
+        $req->execute([
+            'id' => $id,
+            'is_premium' => $is_premium,
+        ]);
+    }
 
+    public function getPremiumTourOperator()
+    {
+        $req = $this->db->prepare('SELECT * FROM tour_operator WHERE is_premium = 1');
+        $req->execute();
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 
-
+    public function getAllTourOperators()
+    {
+        $req = $this->db->prepare('SELECT * FROM tour_operator');
+        $req->execute();
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
     /**
      * Get the value of db
      */

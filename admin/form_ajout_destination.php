@@ -1,3 +1,15 @@
+<?php
+
+require_once "../classes/Manager.php";
+require_once "../config/db.php";
+
+$manager = new Manager($db);
+$tourOperators = $manager->getAllTourOperators();
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,23 +22,29 @@
 </head>
 
 <body>
-<div class="container mt-5">
+    <div class="container mt-5">
         <h1>Ajout de Destination</h1>
         <form method="post" action="../traitement/traitement_form_destination.php">
             <div class="mb-3">
                 <label for="location" class="form-label">Pays</label>
-                <input type="text" class="form-control" id="location" name="location" placeholder="Entrez la localisation">
+                <input type="text" class="form-control" id="location" name="location"
+                    placeholder="Entrez la localisation">
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Prix :</label>
                 <input type="text" class="form-control" id="price" name="price" placeholder="Entrez le prix">
             </div>
             <div class="mb-3">
-                <label for="tour_operator_id" class="form-label">Tour Operator ID :</label>
-                <input type="text" class="form-control" id="tour_operator_id" name="tour_operator_id" placeholder="Entrez l'ID du tour operator">
+                <select class="form-select" aria-label="Default select example" name="id_tour_operator">
+                    <option selected>Choisissez un tour operator</option>
+                    <?php foreach ($tourOperators as $tourOperator): ?>
+                    <option value="<?php echo $tourOperator['id']; ?>"><?php echo $tourOperator['name']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Envoyer</button>
         </form>
-    </div> 
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
