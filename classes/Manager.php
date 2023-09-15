@@ -25,6 +25,8 @@ class Manager
         }
     }
 
+    public function getHomeDestination() {
+        $req = $this->db->prepare('SELECT * FROM destination INNER JOIN tour_operator ON destination.tour_operator_id = tour_operator.id ORDER BY price');
     public function getHomeDestination()
     {
         $req = $this->db->prepare('SELECT * FROM destination');
@@ -32,9 +34,19 @@ class Manager
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+    
 
     public function getHomeTourOperator($id) {
-        $req = $this->db->prepare('SELECT * FROM tour_operator WHERE id = :id');
+        $req = $this->db->prepare('SELECT * FROM tour_operator WHERE id = :id ORDER BY price ASC LIMIT 1');
+        $req->execute([
+            'id' => $id
+        ]);      
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    
+    public function getDestinationsByLocation($id) {
+        $req = $this->db->prepare('SELECT * FROM destination INNER JOIN tour_operator WHERE location = :location AND tour_operator_id = :id');
         $req->execute([
             'id' => $id
         ]);
@@ -42,7 +54,7 @@ class Manager
         return $result;
     }
     
-
+    
     public function getAllDestination()
     {
         $req = $this->db->prepare('SELECT * FROM destination INNER JOIN tour_operator ON destination.tour_operator_id = tour_operator.id');
