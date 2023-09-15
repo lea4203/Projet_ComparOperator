@@ -15,13 +15,13 @@ class Manager
         if ($this->tourOperatorExists($tour_operator_id)) {
             $sql = 'INSERT INTO destination (location, price, tour_operator_id) VALUES (:location, :price, :tour_operator_id)';
 
-
-            $stmt = $this->db->prepare($sql);
-            $stmt->bindParam(':location', $location);
-            $stmt->bindParam(':price', $price);
-            $stmt->bindParam(':tour_operator_id', $tour_operator_id);
-            $stmt->execute();
-
+             
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindParam(':location', $location);
+                $stmt->bindParam(':price', $price);
+                $stmt->bindParam(':tour_operator_id', $tour_operator_id);
+                $stmt->execute();
+            
         }
     }
 

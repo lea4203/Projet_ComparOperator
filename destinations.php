@@ -28,9 +28,7 @@ $location = isset($_POST['location']) ? $_POST['location'] : null;
 
     <main>
         <div class="col-12 bg-danger pt-5 pb-3"></div>
-        <div class="bg-danger text-white pt-3 pb-3 text-center opacity-75">
-            <h1 class="display-4">Nos partenaires pour ce voyage !</h1>
-        </div>
+
         <div class="container col-12 pt-5 pb-3 align-item-center">
             <div class="row">
             <div class="col-lg-4 col-md-12">
@@ -40,10 +38,11 @@ $location = isset($_POST['location']) ? $_POST['location'] : null;
 
                     foreach ($destinations as $destination) {
                         echo '<div class="card m-3">';
-                        echo '<img src="' . $destination['img'] . '" class="card-img-top img-thumbnail" alt="' . $destination['location'] . '">';
                         echo '<div class="card-body">';
                         echo '<h1 class="display-3 text-secondary">Destination</h1>';
                         echo '<h1 class="display-1 text-danger"><b>' . $destination['location'] . '</b></h1>';
+                        echo '<img src="images/logo_lt.png" class="card-img-top" alt="logo">';
+                        echo '<img src="' . $destination['img'] . '" class="card-img-top" alt="' . $destination['location'] . '">';
                         echo '</div>';
                         echo '</div>';
                     }
@@ -72,12 +71,12 @@ $location = isset($_POST['location']) ? $_POST['location'] : null;
 
                     foreach ($tourOperators as $tourOperator) {
 
-                        echo '<div class="col-lg-6 col-md-6 col-sm-12 mb-2">';
-                        echo '<div class="card p-1 m-3">';
-                        echo '<p class="pt-4 opacity-75"><img src="' . $tourOperator['img'] . '" class="card-img-top img-thumbnail" alt="' . $tourOperator['name'] . '" style="max-height: 75px"></p>';
+                        echo '<div class="col-lg-6 col-md-6 col-sm-12 mb-2 text-align-center">';
+                        echo '<div class="card p-1 m-3 text-align-center">';
+                        echo '<p class="pt-4 opacity-75"><img src="' . $tourOperator['img'] . '" class="card-img-top" alt="' . $tourOperator['name'] . '" style="max-height: 75px"></p>';
                         echo '<div class="card-body text-align-center">';
-                        echo '<h5 class="card-title">Le tour opérateur <br><b>' . $tourOperator['name'] . '</b><br>vous propose ce voyage.</h5>';
-                        echo '<h6 class="card-title"><b>' . afficherEtoiles($tourOperator['grade_count']) . '</b></h6>';
+                        echo '<h5 class="card-title text-align-center">Le tour opérateur <br><b>' . $tourOperator['name'] . '</b><br>vous propose ce voyage.</h5>';
+                        echo '<h6 class="card-title text-align-center"><b>' . afficherEtoiles($tourOperator['grade_count']) . '</b></h6>';
                         echo '<button type="button" class="btn btn-sm btn-outline-danger"><a href="' . $tourOperator['link'] . '" target="_blank">Site du Tour Opérateur</a></button>';
                         echo '</div>';
                         echo '</div>';
