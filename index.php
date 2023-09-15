@@ -28,20 +28,23 @@ $destinations = $manager->getHomeDestination();
 
     <main>
         <div class="col-12 bg-danger pt-5 pb-3"></div>
-        <div class="col-12 bg-success text-white pt-3 pb-3 text-center opacity-75"><h1 class="display-4">Découvrez toutes nos destinations !</h1></div>
+        <div class="col-12 bg-danger text-white pt-3 pb-3 text-center opacity-75">
+            <h1 class="display-4">Découvrez toutes nos destinations !</h1>
+        </div>
         <div class="container pt-5 pb-3">
             <div class="row">
                 <?php
                 foreach ($destinations as $destination) {
                     echo '<div class="col-lg-3 col-md-6 col-sm-12 mb-3">'; // Utilisez les classes de colonnes Bootstrap
-                    echo '<div class="card">';
-                    echo '<img src="images/bkg-travel-header.jpg" class="card-img-top" alt="...">';
+                    echo '<div class="card m-2 p-2">';
+                    echo '<img src="' . $destination['img'] . '" class="card-img-top" alt="' . $destination['location'] . '">';
                     echo '<div class="card-body">';
                     echo '<h5 class="card-title"><b>' . $destination['location'] . '</b></h5>';
                     echo '<p class="card-text">A partir de : ' . $destination['price'] . ' €</p>';
                     // echo '<p class="card-text">A partir de ...</p>';
                     echo '<form method="POST" action="destinations.php">';
-                    echo '<input type="hidden" name="id" value="' . $destination['location'] . '">';
+                    echo '<input type="hidden" name="location" value="' . $destination['location'] . '">';
+                    echo '<input type="hidden" name="tour_operator_id" value="' . $destination['tour_operator_id'] . '">';
                     echo '<button type="submit" class="btn btn-danger">Partez maintenant !</button>';
                     echo '</form>';
                     echo '</div>';
