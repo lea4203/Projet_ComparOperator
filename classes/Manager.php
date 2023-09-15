@@ -100,6 +100,9 @@ class Manager
 
 
 
+
+ 
+
     public function getAllDestination()
     {
         $req = $this->db->prepare('SELECT * FROM destination INNER JOIN tour_operator ON destination.tour_operator_id = tour_operator.id');
@@ -120,6 +123,7 @@ class Manager
         ]);
     }
 
+
     public function getAllTourOperator()
     {
         $req = $this->db->prepare('SELECT * FROM tour_operator');
@@ -128,8 +132,10 @@ class Manager
         return $result;
     }
 
-    public function getDestinationByLocation($location)
-    {
+  
+
+    public function getDestinationByLocation($location) {
+
         $req = $this->db->prepare('SELECT * FROM destination WHERE location = :location LIMIT 1');
         $req->execute([
             'location' => $location
@@ -211,8 +217,6 @@ class Manager
         ]);
     }
 
-
-
     public function updateTourOperatorIsPremium($id, $is_premium)
     {
         $req = $this->db->prepare('UPDATE tour_operator SET is_premium = :is_premium WHERE id = :id');
@@ -237,7 +241,6 @@ class Manager
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-
 
     public function addAdministrator($username, $passwordHash)
     {

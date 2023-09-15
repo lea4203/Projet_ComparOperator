@@ -48,6 +48,7 @@ $destinations = $manager->getHomeDestination();
                     echo '<button type="submit" class="btn btn-danger">Partez maintenant !</button>';
                     echo '</form>';
                     echo '</div>';
+                    echo '<div><img src="images/logo_lt.png" class="card-img-bottom" alt="ComparOperator"/></div>';
                     echo '</div>';
                     echo '</div>';
                 }
