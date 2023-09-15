@@ -3,8 +3,9 @@
 require_once 'classes/Manager.php';
 require_once 'config/db.php';
 $manager = new Manager($db);
+
 $location = isset($_POST['location']) ? $_POST['location'] : null;
-// var_dump($tourOperators);
+// var_dump($location);
 
 ?>
 
@@ -44,7 +45,7 @@ $location = isset($_POST['location']) ? $_POST['location'] : null;
                     }
 
                     if ($location) {
-                        $tourOperators = $manager->getDestinationsByLocation($id);
+                        $tourOperators = $manager->getTourOperatorByLocation($location);
                     
                     foreach ($tourOperators as $tourOperator) {
                     
