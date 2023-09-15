@@ -71,12 +71,12 @@ $location = isset($_POST['location']) ? $_POST['location'] : null;
 
                     foreach ($tourOperators as $tourOperator) {
 
-                        echo '<div class="col-lg-6 col-md-6 col-sm-12 mb-2 text-align-center">';
-                        echo '<div class="card p-1 m-3 text-align-center">';
+                        echo '<div class="col-6 col-md-12 col-sm-12 mb-2">';
+                        echo '<div class="card p-1 m-3">';
                         echo '<p class="pt-4 opacity-75"><img src="' . $tourOperator['img'] . '" class="card-img-top" alt="' . $tourOperator['name'] . '" style="max-height: 75px"></p>';
-                        echo '<div class="card-body text-align-center">';
-                        echo '<h5 class="card-title text-align-center">Le tour opérateur <br><b>' . $tourOperator['name'] . '</b><br>vous propose ce voyage.</h5>';
-                        echo '<h6 class="card-title text-align-center"><b>' . afficherEtoiles($tourOperator['grade_count']) . '</b></h6>';
+                        echo '<div class="card-body">';
+                        echo '<h5 class="card-title">Le tour opérateur <br><b>' . $tourOperator['name'] . '</b><br>vous propose ce voyage.</h5>';
+                        echo '<h6 class="card-title"><b>' . afficherEtoiles($tourOperator['grade_count']) . '</b></h6>';
                         echo '<button type="button" class="btn btn-sm btn-outline-danger"><a href="' . $tourOperator['link'] . '" target="_blank">Site du Tour Opérateur</a></button>';
                         echo '</div>';
                         echo '</div>';
