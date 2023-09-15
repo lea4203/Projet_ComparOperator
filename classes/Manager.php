@@ -100,6 +100,15 @@ class Manager
         return $result;
     }
 
+    public function getDestinationByLocation($location) {
+        $req = $this->db->prepare('SELECT * FROM destination WHERE location = :location LIMIT 1');
+        $req->execute([
+            'location' => $location
+        ]);
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    
     public function getDestinationsByTourOperator($tourOperatorID)
     {
         $req = $this->db->prepare('SELECT * FROM destination WHERE tour_operator_id = :tour_operator_id');
