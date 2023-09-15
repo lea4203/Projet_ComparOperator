@@ -41,7 +41,7 @@ $destinations = $manager->getHomeDestination();
                     echo '<p class="card-text">A partir de : ' . $destination['price'] . ' €</p>';
                     // echo '<p class="card-text">A partir de ...</p>';
                     echo '<form method="POST" action="destinations.php">';
-                    echo '<input type="hidden" name="tour_operator_id" value="' . $destination['tour_operator_id'] . '">';
+                    echo '<input type="hidden" name="id" value="' . $destination['location'] . '">';
                     echo '<button type="submit" class="btn btn-danger">Partez maintenant !</button>';
                     echo '</form>';
                     echo '</div>';
