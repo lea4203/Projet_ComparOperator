@@ -25,11 +25,9 @@ class Manager
         }
     }
 
+    
     public function getHomeDestination() {
         $req = $this->db->prepare('SELECT * FROM destination INNER JOIN tour_operator ON destination.tour_operator_id = tour_operator.id ORDER BY price');
-    public function getHomeDestination()
-    {
-        $req = $this->db->prepare('SELECT * FROM destination');
         $req->execute();
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         return $result;
