@@ -120,7 +120,7 @@ $tourOperators = $manager->getAllTourOperator();
                                             Premium</button>
                                     </form>
                                 <?php else: ?>
-                                    <i class="fas fa-star text-warning"></i> <!-- Ajoutez l'icône de votre choix ici -->
+                                    <i class="fas fa-star text-warning"></i> 
                                 <?php endif; ?>
                             </td>
                         </tr>
