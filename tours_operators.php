@@ -28,8 +28,8 @@ $tourOperators = $manager->getAllTourOperators();
 
     <main>
         <div class="col-12 bg-danger pt-5 pb-3"></div>
-        <div class="col-12 bg-primary text-white pt-3 pb-3 text-center opacity-75">
-            <h1 class="display-4">Découvrez toutes nos Tours Operators !</h1>
+        <div class="col-12 bg-primary text-white text-center pt-3 pb-3 opacity-75">
+            <h1 class="display-4 text-center">Découvrez tous nos Tours Operators !</h1>
         </div>
         <div class="container pt-5 pb-3">
             <div class="row">
@@ -48,12 +48,11 @@ $tourOperators = $manager->getAllTourOperators();
 
                     foreach ($tourOperators as $tourOperator) {
 
-                        echo '<div class="col-lg-6 col-md-6 col-sm-12 mb-2 justify-content-center">';
-                        echo '<div class="card p-1 m-3 text-align-center">';
-                        echo '<p class="pt-4 opacity-75"><img src="' . $tourOperator['img'] . '" class="card-img-top" alt="' . $tourOperator['name'] . '" style="max-height: 75px"></p>';
-                        echo '<div class="card-body text-align-center">';
-                        echo '<h5 class="card-title text-align-center">Le tour opérateur <br><b>' . $tourOperator['name'] . '</b><br>vous propose ce voyage.</h5>';
-                        echo '<h6 class="card-title text-align-center"><b>' . afficherEtoiles($tourOperator['grade_count']) . '</b></h6>';
+                        echo '<div class="col-lg-3 col-md-6 col-sm-12 mb-2 justify-content-center">';
+                        echo '<div class="card p-1 m-3">';
+                        echo '<p class="m-2 opacity-75"><img src="' . $tourOperator['img'] . '" class="card-img-top" alt="' . $tourOperator['name'] . '" style="max-height: 75px"></p>';
+                        echo '<div class="card-body">';
+                        echo '<h6 class="card-title"><b>' . afficherEtoiles($tourOperator['grade_count']) . '</b></h6>';
                         echo '<button type="button" class="btn btn-sm btn-outline-danger"><a href="' . $tourOperator['link'] . '" target="_blank">Site du Tour Opérateur</a></button>';
                         echo '</div>';
                         echo '</div>';
