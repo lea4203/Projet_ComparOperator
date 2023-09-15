@@ -3,8 +3,8 @@
 require_once 'classes/Manager.php';
 require_once 'config/db.php';
 $manager = new Manager($db);
-$tourOperatorId = isset($_POST['tour_operator_id']) ? $_POST['tour_operator_id'] : null;
-$tourOperatorData = $manager->getHomeTourOperator($tourOperatorId);
+$location = isset($_POST['location']) ? $_POST['location'] : null;
+// var_dump($tourOperators);
 
 ?>
 
@@ -27,8 +27,8 @@ $tourOperatorData = $manager->getHomeTourOperator($tourOperatorId);
 
     <main>
         <div class="col-12 bg-danger pt-5 pb-3"></div>
-        <div class="col-12 bg-success text-white pt-3 pb-3 text-center opacity-75"><h1 class="display-4">Découvrez toutes nos destinations !</h1></div>
-        <div class="container pt-5 pb-3">
+        <div class="bg-danger text-white pt-3 pb-3 text-center opacity-75"><h1 class="display-4">Nos partenaires pour ce voyage !</h1></div>
+            <div class="container col-12 pt-5 pb-3">
             <div class="row">
                 <?php
                    
@@ -43,21 +43,30 @@ $tourOperatorData = $manager->getHomeTourOperator($tourOperatorId);
                         return $etoiles;
                     }
 
-    foreach ($tourOperatorData as $tourOperator) {
-        echo '<div class="col-lg-3 col-md-6 col-sm-12 mb-3">'; // Utilisez les classes de colonnes Bootstrap
+                    if ($location) {
+                        $tourOperators = $manager->getDestinationsByLocation($id);
+                    
+                    foreach ($tourOperators as $tourOperator) {
+                    
+                    echo '<div class="col-lg-3 col-md-6 col-sm-12 mb-3">';
                     echo '<div class="card">';
-                    echo '<img src="images/bkg-travel-header.jpg" class="card-img-top" alt="...">';
+                    echo '<p class="m-4"><img src="' . $tourOperator['img'] . '" class="card-img-top" alt="' . $tourOperator['name'] . '">';
                     echo '<div class="card-body">';
-                    echo '<h5 class="card-title">Le tour opérateur <b>' . $tourOperator['name'] . '</b> propose ce voyage.</h5>';
+                    echo '<h5 class="card-title">Le tour opérateur <b>' . $tourOperator['name'] . '</b> propose ce voyage à ' . $tourOperator['price'] . '€.</h5>';
                     echo '<h6 class="card-title"><b>' . afficherEtoiles($tourOperator['grade_count']) . '</b></h6>';
                     echo '<p class="card-text"><a href="' . $tourOperator['link'] . '" target="_blank">Site du Tour Opérateur</a></p>';                    echo '</div>';
                     echo '</div>';
                     echo '</div>';
                 }
+                    } else {
+                    echo "Aucun tour-opérateur trouvé pour cette destination.";
+                }
+                        
                 ?>
             </div>
+            <div class="row"></div>
         </div>
-
+        </div>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
